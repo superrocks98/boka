@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Superrocks98 - Baka - Bio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --asphalt-950: #111416;
+      --asphalt-900: #171b1d;
+      --asphalt-800: #22282b;
+      --asphalt-700: #31393d;
+      --moss-500: #6f8f57;
+      --moss-400: #89a96c;
+      --moss-300: #a8c08c;
+      --text-main: #edf2eb;
+      --text-soft: #c6d0c0;
+      --glass: rgba(18, 23, 22, 0.38);
+      --line: rgba(168, 192, 140, 0.32);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      background:
+        linear-gradient(rgba(10,12,11,0.22), rgba(10,12,11,0.34)),
+        radial-gradient(circle at top, rgba(111,143,87,0.18), transparent 40%),
+        var(--asphalt-950);
+      overflow-x: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      filter: saturate(0.96) brightness(0.9);
+      transform: scale(1.05);
+    }
+
+    .bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(12,16,14,0.18), rgba(12,16,14,0.32));
+      z-index: 1;
+    }
+
+    .bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mist,
+    .grain,
+    .grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .mist {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(137,169,108,0.13), transparent 26%),
+        radial-gradient(circle at 80% 30%, rgba(137,169,108,0.10), transparent 28%),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,0.035), transparent 30%);
+      animation: mistShift 12s ease-in-out infinite alternate;
+    }
+
+    .grid {
+      background-image:
+        linear-gradient(rgba(168,192,140,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168,192,140,0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+      opacity: .35;
+    }
+
+    .grain {
+      opacity: .08;
+      background-image:
+        radial-gradient(circle at 25% 25%, #fff 0.6px, transparent 0.8px),
+        radial-gradient(circle at 75% 75%, #fff 0.6px, transparent 0.8px);
+      background-size: 22px 22px;
+    }
+
+    .wrap {
+      min-height: 100vh;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      padding: 32px 18px;
+    }
+
+    .card-shell {
+      width: min(100%, 470px);
+      position: relative;
+      border-radius: 30px;
+      animation: rise 1s cubic-bezier(.16,1,.3,1) both;
+    }
+.card-glow {
+      position: absolute;
+      inset: -1px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(137,169,108,0.34), rgba(255,255,255,0.02), rgba(137,169,108,0.24));
+      filter: blur(0.4px);
+      opacity: 0.95;
+    }
+
+    .bio-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      padding: 44px 34px 32px;
+      isolation: isolate;
+    }
+
+    .bio-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent 24%, transparent 70%, rgba(137,169,108,0.03));
+      z-index: -1;
+    }
+.content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pfp-wrap {
+      width: 154px;
+      height: 154px;
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      padding: 5px;
+      background: linear-gradient(135deg, rgba(168,192,140,0.9), rgba(49,57,61,0.7), rgba(168,192,140,0.85));
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 10px 35px rgba(0,0,0,0.35), 0 0 45px rgba(111,143,87,0.16);
+    }
+
+    .pfp {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      background: linear-gradient(135deg, #39423e, #232a27);
+    }
+
+    .name {
+      font-family: 'Cinzel', serif;
+      font-size: 42px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #f4f8ef;
+      text-shadow: 0 0 22px rgba(168,192,140,0.18);
+      margin-bottom: 8px;
+    }
+
+    .sub {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--moss-300);
+      margin-bottom: 24px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168,192,140,0.5), transparent);
+      margin: 0 0 24px;
+      position: relative;
+    }
+
+    .divider::after {
+      content: "◦";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--moss-300);
+      background: rgba(21,26,24,0.88);
+      padding: 0 10px;
+      font-size: 14px;
+    }
+
+    .bio {
+      text-align: center;
+      line-height: 1.8;
+      color: var(--text-soft);
+      margin-bottom: 24px;
+      font-size: 16px;
+    }
+
+    .bio p + p { margin-top: 6px; }
+
+
+    .note-block {
+      position: relative;
+      margin: 6px 0 30px;
+      padding: 26px 22px 30px;
+      text-align: center;
+      color: #eaf1e3;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 19px;
+      line-height: 1.75;
+      letter-spacing: 0.2px;
+      text-shadow: 0 0 14px rgba(0,0,0,0.18);
+    }
+
+    .note-block::before,
+    .note-block::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(168,192,140,0.18) 6%,
+        rgba(168,192,140,0.55) 26%,
+        rgba(168,192,140,0.72) 50%,
+        rgba(168,192,140,0.55) 74%,
+        rgba(168,192,140,0.18) 94%,
+        transparent 100%
+      );
+    }
+
+    .note-block::before {
+      top: 0;
+    }
+
+    .note-block::after {
+      bottom: 0;
+    }
+
+    .note-block p {
+      margin: 0;
+    }
+
+    .note-block p + p {
+      margin-top: 6px;
+    }
+
+    .note-gem {
+      position: absolute;
+      left: 50%;
+      bottom: -13px;
+      transform: translateX(-50%);
+      width: 34px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(17, 23, 20, 0.92);
+      border: 1px solid rgba(168,192,140,0.26);
+      color: var(--moss-300);
+      font-size: 10px;
+      letter-spacing: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+    }
+
+    .music-row {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .icon-btn,
+    .social a {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--text-main);
+      border: 1px solid rgba(168,192,140,0.28);
+      background: rgba(38, 45, 42, 0.5);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+      cursor: pointer;
+    }
+
+    .icon-btn:hover,
+    .social a:hover {
+      transform: translateY(-5px);
+      border-color: rgba(168,192,140,0.6);
+      background: rgba(62, 76, 68, 0.65);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.28), 0 0 18px rgba(137,169,108,0.12);
+    }
+
+    .icon-btn svg,
+    .social svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(198,208,192,0.7);
+      letter-spacing: 1.8px;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px) scale(.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes mistShift {
+      from { transform: translate3d(-2%, -1%, 0) scale(1); }
+      to { transform: translate3d(2%, 1%, 0) scale(1.05); }
+    }
+8% { opacity: 0.55; }
+      100% { transform: translateY(125vh) rotate(18deg); opacity: 0; }
+    }
+50% { transform: scale(1.015); opacity: 1; }
+    }
+      50% { transform: scale(1.01); opacity: 0.82; }
+    }
+25%, 55% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0.25; transform: scale(0.85); }
+    }
+
+    @media (max-width: 560px) {
+      .bio-card { padding: 34px 22px 28px; }
+      .pfp-wrap { width: 132px; height: 132px; }
+      .name { font-size: 34px; }
+      .bio { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" id="bgLayer"></div>
+  <div class="mist"></div>
+  <div class="grid"></div>
+  <div class="grain"></div>
+
+  <main class="wrap">
+    <section class="card-shell">
+      <div class="card-glow"></div>
+      <div class="bio-card">
+        <div class="content">
+          <div class="pfp-wrap">
+            <img id="pfpImage" class="pfp" src="https://raw.githubusercontent.com/superrocks98/boka/main/25ce56062593bfba1fcdd0dec82f7231_t.jpeg" alt="Profile picture" />
+          </div>
+
+          <h1 class="name">Superrocks98</h1>
+          <p class="sub">Gamer • Server Developer • Manager Administrator
+
+</p>
+
+          <div class="divider"></div>
+
+          <div class="bio">
+            <p>Lazy panda naps through sun and rain,</p>
+            <p>World keeps shouting, but all in vain,</p>
+            <p>He yawns and dreams, “Why bother with the strain?”</p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="note-block">
+            <p>Brain loading… please wait.</p>
+            <p>Still loading since 2006.</p>
+            <p>Expert in doing nothing professionally.</p>
+            <p>CEO of “kal se pakka”.</p>
+            <span class="note-gem" aria-hidden="true">◆</span>
+          </div>
+
+          <div class="music-row">
+            <button class="icon-btn" id="musicBtn" aria-label="Toggle music" type="button">
+              <svg id="musicIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="social">
+            <a id="discordLink" href="https://discord.com" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"></path></svg>
+            </a>
+            <a id="instagramLink" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a id="youtubeLink" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.593 7.203a2.506 2.506 0 00-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 00-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 001.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z"></path></svg>
+            </a>
+            <a id="xLink" href="https://www.twitch.tv/supari_gaming" target="_blank" rel="noopener noreferrer" aria-label="Twitch">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v11l-4 4h-3l-2 2H8v-2H4V3zm2 2v9h3v2l2-2h4l3-3V5H6zm5 2h2v4h-2V7zm4 0h2v4h-2V7z"></path></svg>
+            </a>
+          </div>
+
+          <p class="tag">Made with 💚 by a panda  🐼</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8f1dc62.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const SITE_CONFIG = {
+      pfpUrl: 'https://raw.githubusercontent.com/superrocks98/boka/main/25ce56062593bfba1fcdd0dec82f7231_t.jpeg',
+      backgroundUrl: 'https://raw.githubusercontent.com/superrocks98/boka/main/hailuo-2_3_turn_this_into_an_animation_where_this_is_sleeping_and_his_fur_and_grass_and_flo-0.mp4',
+      musicUrl: 'https://raw.githubusercontent.com/superrocks98/boka/main/Happy%20Face_spotdown.org.mp3',
+      socials: {
+        discord: 'https://discord.gg/ZUgVy2kSuU',
+        instagram: 'https://www.instagram.com/superrocks98/',
+        youtube: 'https://www.youtube.com/@SuperrocksGaming-fd1qf',
+        x: 'https://www.twitch.tv/supari_gaming'
+      }
+    };
+
+    const pfpImage = document.getElementById('pfpImage');
+    const bgLayer = document.getElementById('bgLayer');
+    const bgMusic = document.getElementById('bgMusic');
+
+    pfpImage.src = SITE_CONFIG.pfpUrl;
+    bgLayer.innerHTML = `<video autoplay muted loop playsinline><source src="${SITE_CONFIG.backgroundUrl}" type="video/mp4"></video>`;
+    bgMusic.querySelector('source').src = SITE_CONFIG.musicUrl;
+    bgMusic.load();
+
+    document.getElementById('discordLink').href = SITE_CONFIG.socials.discord;
+    document.getElementById('instagramLink').href = SITE_CONFIG.socials.instagram;
+    document.getElementById('youtubeLink').href = SITE_CONFIG.socials.youtube;
+    document.getElementById('xLink').href = SITE_CONFIG.socials.x;
+const musicBtn = document.getElementById('musicBtn');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+
+    musicBtn.addEventListener('click', async () => {
+      try {
+        if (isPlaying) {
+          bgMusic.pause();
+          musicIcon.innerHTML = `
+            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>`;
+        } else {
+          await bgMusic.play();
+          musicIcon.innerHTML = `
+            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+            <path d="M15.54 8.46a5 5 0 010 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 010 14.14"></path>`;
+        }
+        isPlaying = !isPlaying;
+      } catch (err) {
+        console.error('Music could not start:', err);
+      }
+    });
+</script>
+</body>
+</html>
